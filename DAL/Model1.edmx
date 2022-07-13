@@ -1,0 +1,1485 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="BabySitterDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="BabySitter">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FirstName" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="LastName" Type="nvarchar" MaxLength="15" Nullable="false" />
+          <Property Name="City" Type="nchar" MaxLength="25" Nullable="false" />
+          <Property Name="Street" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="SalaryHour" Type="int" />
+          <Property Name="Password" Type="nvarchar" MaxLength="15" Nullable="false" />
+          <Property Name="BornDate" Type="date" Nullable="false" />
+          <Property Name="Mail" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Phone" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="SpecialChildren" Type="bit" Nullable="false" />
+          <Property Name="ShowTell" Type="bit" Nullable="false" />
+          <Property Name="ShowMail" Type="bit" Nullable="false" />
+          <Property Name="status" Type="int" Nullable="false" />
+          <Property Name="StartWork" Type="date" Nullable="false" />
+          <Property Name="LowAgeChildren" Type="int" Nullable="false" />
+          <Property Name="HighAgeChildren" Type="int" Nullable="false" />
+          <Property Name="license" Type="bit" Nullable="false" />
+          <Property Name="Household" Type="bit" Nullable="false" />
+          <Property Name="CollectingChildren" Type="bit" Nullable="false" />
+          <Property Name="More" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Experience" Type="int" Nullable="false" />
+          <Property Name="MaxChildren" Type="int" Nullable="false" />
+          <Property Name="Is" Type="nchar" MaxLength="10" />
+          <Property Name="IsShowFromGroups" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Favorite">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdBabySitter" Type="int" Nullable="false" />
+          <Property Name="IdMother" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="FixedBabySitter">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdBabySitter" Type="int" Nullable="false" />
+          <Property Name="Day" Type="int" Nullable="false" />
+          <Property Name="IdPart" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="FixedDate">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdMother" Type="int" Nullable="false" />
+          <Property Name="IdBabySitter" Type="int" Nullable="false" />
+          <Property Name="Date" Type="date" Nullable="false" />
+          <Property Name="IdPart" Type="int" Nullable="false" />
+          <Property Name="Detailst" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Group">
+          <Key>
+            <PropertyRef Name="GroupId" />
+          </Key>
+          <Property Name="GroupId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdMotherManager" Type="int" />
+          <Property Name="IdBabySitterManager" Type="int" />
+          <Property Name="NameGroup" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="Password" Type="nchar" MaxLength="10" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Invaite">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DateInviting" Type="date" Nullable="false" />
+          <Property Name="IdMotherInviting" Type="int" />
+          <Property Name="IdBabySitterInviting" Type="int" />
+          <Property Name="IsMotherInviting" Type="bit" Nullable="false" />
+          <Property Name="IdMotherAcceptsInvitation" Type="int" />
+          <Property Name="IdBabySitterAcceptsInvitation" Type="int" />
+          <Property Name="Date" Type="date" Nullable="false" />
+          <Property Name="IdPart" Type="int" Nullable="false" />
+          <Property Name="Details" Type="nvarchar(max)" />
+          <Property Name="IsConfirm" Type="bit" />
+          <Property Name="IdRequestMother" Type="int" />
+          <Property Name="IdOpenBabySitter" Type="int" />
+        </EntityType>
+        <EntityType Name="Language">
+          <Key>
+            <PropertyRef Name="IdLanguage" />
+          </Key>
+          <Property Name="IdLanguage" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NameLanguage" Type="nchar" MaxLength="10" Nullable="false" />
+        </EntityType>
+        <EntityType Name="LanguageToMember">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdMember" Type="int" Nullable="false" />
+          <Property Name="IdLanguage" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="MemberGroup">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdGroup" Type="int" Nullable="false" />
+          <Property Name="IdMother" Type="int" />
+          <Property Name="IdBabysitter" Type="int" />
+          <Property Name="IsApproved" Type="bit" />
+        </EntityType>
+        <EntityType Name="Mother">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FirstName" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="LastName" Type="nvarchar" MaxLength="15" Nullable="false" />
+          <Property Name="Street" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="Phone" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="NumChildren" Type="int" Nullable="false" />
+          <Property Name="SalaryHour" Type="int" />
+          <Property Name="Password" Type="nvarchar" MaxLength="15" Nullable="false" />
+          <Property Name="Mail" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="More" Type="nvarchar(max)" />
+          <Property Name="LowAgeChildren" Type="int" Nullable="false" />
+          <Property Name="HighAgeChildren" Type="int" Nullable="false" />
+          <Property Name="City" Type="nchar" MaxLength="25" Nullable="false" />
+          <Property Name="ShowMail" Type="bit" />
+          <Property Name="ShowTell" Type="bit" />
+          <Property Name="IsShowFromGroups" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="OpenBabySitter">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdBabySitter" Type="int" Nullable="false" />
+          <Property Name="DateOpen" Type="date" Nullable="false" />
+          <Property Name="Date" Type="date" Nullable="false" />
+          <Property Name="IdPart" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PartOfDay">
+          <Key>
+            <PropertyRef Name="IdPart" />
+          </Key>
+          <Property Name="IdPart" Type="int" Nullable="false" />
+          <Property Name="Part" Type="nchar" MaxLength="10" Nullable="false" />
+        </EntityType>
+        <EntityType Name="RequestMother">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DateRequest" Type="date" Nullable="false" />
+          <Property Name="IdMother" Type="int" Nullable="false" />
+          <Property Name="Date" Type="date" Nullable="false" />
+          <Property Name="IdPart" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Status">
+          <Key>
+            <PropertyRef Name="IdType" />
+          </Key>
+          <Property Name="IdType" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Type" Type="nchar" MaxLength="10" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="Training">
+          <Key>
+            <PropertyRef Name="IdTrainingTable" />
+          </Key>
+          <Property Name="IdTrainingTable" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NameTraining" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TrainingToMember">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="IdTraining" Type="int" Nullable="false" />
+          <Property Name="IdMember" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_BabySitter_Status">
+          <End Role="Status" Type="Self.Status" Multiplicity="1" />
+          <End Role="BabySitter" Type="Self.BabySitter" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Status">
+              <PropertyRef Name="IdType" />
+            </Principal>
+            <Dependent Role="BabySitter">
+              <PropertyRef Name="status" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Favorite_BabySitter">
+          <End Role="BabySitter" Type="Self.BabySitter" Multiplicity="1" />
+          <End Role="Favorite" Type="Self.Favorite" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BabySitter">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Favorite">
+              <PropertyRef Name="IdBabySitter" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Favorite_Mother">
+          <End Role="Mother" Type="Self.Mother" Multiplicity="1" />
+          <End Role="Favorite" Type="Self.Favorite" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Mother">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Favorite">
+              <PropertyRef Name="IdMother" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FixedBabySitter_BabySitter">
+          <End Role="BabySitter" Type="Self.BabySitter" Multiplicity="1" />
+          <End Role="FixedBabySitter" Type="Self.FixedBabySitter" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BabySitter">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="FixedBabySitter">
+              <PropertyRef Name="IdBabySitter" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FixedBabySitter_PartOfDay">
+          <End Role="PartOfDay" Type="Self.PartOfDay" Multiplicity="1" />
+          <End Role="FixedBabySitter" Type="Self.FixedBabySitter" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PartOfDay">
+              <PropertyRef Name="IdPart" />
+            </Principal>
+            <Dependent Role="FixedBabySitter">
+              <PropertyRef Name="IdPart" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Group_BabySitter">
+          <End Role="BabySitter" Type="Self.BabySitter" Multiplicity="0..1" />
+          <End Role="Group" Type="Self.Group" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BabySitter">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Group">
+              <PropertyRef Name="IdBabySitterManager" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Group_Mother">
+          <End Role="Mother" Type="Self.Mother" Multiplicity="0..1" />
+          <End Role="Group" Type="Self.Group" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Mother">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Group">
+              <PropertyRef Name="IdMotherManager" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Invaite_BabySitter">
+          <End Role="PartOfDay" Type="Self.PartOfDay" Multiplicity="1" />
+          <End Role="Invaite" Type="Self.Invaite" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PartOfDay">
+              <PropertyRef Name="IdPart" />
+            </Principal>
+            <Dependent Role="Invaite">
+              <PropertyRef Name="IdPart" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Invaite_BabySitter1">
+          <End Role="BabySitter" Type="Self.BabySitter" Multiplicity="0..1" />
+          <End Role="Invaite" Type="Self.Invaite" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BabySitter">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Invaite">
+              <PropertyRef Name="IdBabySitterAcceptsInvitation" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Invaite_Mother">
+          <End Role="Mother" Type="Self.Mother" Multiplicity="0..1" />
+          <End Role="Invaite" Type="Self.Invaite" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Mother">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Invaite">
+              <PropertyRef Name="IdMotherInviting" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Invaite_Mother1">
+          <End Role="Mother" Type="Self.Mother" Multiplicity="0..1" />
+          <End Role="Invaite" Type="Self.Invaite" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Mother">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Invaite">
+              <PropertyRef Name="IdMotherAcceptsInvitation" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Invaite_OpenBabySitter">
+          <End Role="OpenBabySitter" Type="Self.OpenBabySitter" Multiplicity="0..1" />
+          <End Role="Invaite" Type="Self.Invaite" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OpenBabySitter">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Invaite">
+              <PropertyRef Name="IdOpenBabySitter" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Invaite_RequestMother">
+          <End Role="RequestMother" Type="Self.RequestMother" Multiplicity="0..1" />
+          <End Role="Invaite" Type="Self.Invaite" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RequestMother">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Invaite">
+              <PropertyRef Name="IdRequestMother" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LanguageToMember_BabySitter">
+          <End Role="BabySitter" Type="Self.BabySitter" Multiplicity="1" />
+          <End Role="LanguageToMember" Type="Self.LanguageToMember" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BabySitter">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="LanguageToMember">
+              <PropertyRef Name="IdMember" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LanguageToMember_Language">
+          <End Role="Language" Type="Self.Language" Multiplicity="1" />
+          <End Role="LanguageToMember" Type="Self.LanguageToMember" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Language">
+              <PropertyRef Name="IdLanguage" />
+            </Principal>
+            <Dependent Role="LanguageToMember">
+              <PropertyRef Name="IdLanguage" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MemberGroup_BabySitter">
+          <End Role="BabySitter" Type="Self.BabySitter" Multiplicity="0..1" />
+          <End Role="MemberGroup" Type="Self.MemberGroup" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BabySitter">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="MemberGroup">
+              <PropertyRef Name="IdBabysitter" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MemberGroup_Group">
+          <End Role="Group" Type="Self.Group" Multiplicity="1" />
+          <End Role="MemberGroup" Type="Self.MemberGroup" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Group">
+              <PropertyRef Name="GroupId" />
+            </Principal>
+            <Dependent Role="MemberGroup">
+              <PropertyRef Name="IdGroup" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MemberGroup_Mother">
+          <End Role="Mother" Type="Self.Mother" Multiplicity="0..1" />
+          <End Role="MemberGroup" Type="Self.MemberGroup" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Mother">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="MemberGroup">
+              <PropertyRef Name="IdMother" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OpenBabySitter_BabySitter">
+          <End Role="BabySitter" Type="Self.BabySitter" Multiplicity="1" />
+          <End Role="OpenBabySitter" Type="Self.OpenBabySitter" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BabySitter">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="OpenBabySitter">
+              <PropertyRef Name="IdBabySitter" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OpenBabySitter_PartOfDay">
+          <End Role="PartOfDay" Type="Self.PartOfDay" Multiplicity="1" />
+          <End Role="OpenBabySitter" Type="Self.OpenBabySitter" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PartOfDay">
+              <PropertyRef Name="IdPart" />
+            </Principal>
+            <Dependent Role="OpenBabySitter">
+              <PropertyRef Name="IdPart" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_requestMother_mother">
+          <End Role="Mother" Type="Self.Mother" Multiplicity="1" />
+          <End Role="RequestMother" Type="Self.RequestMother" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Mother">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="RequestMother">
+              <PropertyRef Name="IdMother" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RequestMother_PartOfDay">
+          <End Role="PartOfDay" Type="Self.PartOfDay" Multiplicity="1" />
+          <End Role="RequestMother" Type="Self.RequestMother" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PartOfDay">
+              <PropertyRef Name="IdPart" />
+            </Principal>
+            <Dependent Role="RequestMother">
+              <PropertyRef Name="IdPart" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TrainingToMember_BabySitter">
+          <End Role="BabySitter" Type="Self.BabySitter" Multiplicity="1" />
+          <End Role="TrainingToMember" Type="Self.TrainingToMember" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BabySitter">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TrainingToMember">
+              <PropertyRef Name="IdMember" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TrainingToMember_Training">
+          <End Role="Training" Type="Self.Training" Multiplicity="1" />
+          <End Role="TrainingToMember" Type="Self.TrainingToMember" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Training">
+              <PropertyRef Name="IdTrainingTable" />
+            </Principal>
+            <Dependent Role="TrainingToMember">
+              <PropertyRef Name="IdTraining" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="BabySitterDBModelStoreContainer">
+          <EntitySet Name="BabySitter" EntityType="Self.BabySitter" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Favorite" EntityType="Self.Favorite" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FixedBabySitter" EntityType="Self.FixedBabySitter" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FixedDate" EntityType="Self.FixedDate" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Group" EntityType="Self.Group" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Invaite" EntityType="Self.Invaite" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Language" EntityType="Self.Language" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LanguageToMember" EntityType="Self.LanguageToMember" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MemberGroup" EntityType="Self.MemberGroup" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Mother" EntityType="Self.Mother" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OpenBabySitter" EntityType="Self.OpenBabySitter" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PartOfDay" EntityType="Self.PartOfDay" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RequestMother" EntityType="Self.RequestMother" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Status" EntityType="Self.Status" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Training" EntityType="Self.Training" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TrainingToMember" EntityType="Self.TrainingToMember" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_BabySitter_Status" Association="Self.FK_BabySitter_Status">
+            <End Role="Status" EntitySet="Status" />
+            <End Role="BabySitter" EntitySet="BabySitter" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Favorite_BabySitter" Association="Self.FK_Favorite_BabySitter">
+            <End Role="BabySitter" EntitySet="BabySitter" />
+            <End Role="Favorite" EntitySet="Favorite" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Favorite_Mother" Association="Self.FK_Favorite_Mother">
+            <End Role="Mother" EntitySet="Mother" />
+            <End Role="Favorite" EntitySet="Favorite" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FixedBabySitter_BabySitter" Association="Self.FK_FixedBabySitter_BabySitter">
+            <End Role="BabySitter" EntitySet="BabySitter" />
+            <End Role="FixedBabySitter" EntitySet="FixedBabySitter" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FixedBabySitter_PartOfDay" Association="Self.FK_FixedBabySitter_PartOfDay">
+            <End Role="PartOfDay" EntitySet="PartOfDay" />
+            <End Role="FixedBabySitter" EntitySet="FixedBabySitter" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Group_BabySitter" Association="Self.FK_Group_BabySitter">
+            <End Role="BabySitter" EntitySet="BabySitter" />
+            <End Role="Group" EntitySet="Group" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Group_Mother" Association="Self.FK_Group_Mother">
+            <End Role="Mother" EntitySet="Mother" />
+            <End Role="Group" EntitySet="Group" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Invaite_BabySitter" Association="Self.FK_Invaite_BabySitter">
+            <End Role="PartOfDay" EntitySet="PartOfDay" />
+            <End Role="Invaite" EntitySet="Invaite" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Invaite_BabySitter1" Association="Self.FK_Invaite_BabySitter1">
+            <End Role="BabySitter" EntitySet="BabySitter" />
+            <End Role="Invaite" EntitySet="Invaite" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Invaite_Mother" Association="Self.FK_Invaite_Mother">
+            <End Role="Mother" EntitySet="Mother" />
+            <End Role="Invaite" EntitySet="Invaite" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Invaite_Mother1" Association="Self.FK_Invaite_Mother1">
+            <End Role="Mother" EntitySet="Mother" />
+            <End Role="Invaite" EntitySet="Invaite" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Invaite_OpenBabySitter" Association="Self.FK_Invaite_OpenBabySitter">
+            <End Role="OpenBabySitter" EntitySet="OpenBabySitter" />
+            <End Role="Invaite" EntitySet="Invaite" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Invaite_RequestMother" Association="Self.FK_Invaite_RequestMother">
+            <End Role="RequestMother" EntitySet="RequestMother" />
+            <End Role="Invaite" EntitySet="Invaite" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LanguageToMember_BabySitter" Association="Self.FK_LanguageToMember_BabySitter">
+            <End Role="BabySitter" EntitySet="BabySitter" />
+            <End Role="LanguageToMember" EntitySet="LanguageToMember" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LanguageToMember_Language" Association="Self.FK_LanguageToMember_Language">
+            <End Role="Language" EntitySet="Language" />
+            <End Role="LanguageToMember" EntitySet="LanguageToMember" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MemberGroup_BabySitter" Association="Self.FK_MemberGroup_BabySitter">
+            <End Role="BabySitter" EntitySet="BabySitter" />
+            <End Role="MemberGroup" EntitySet="MemberGroup" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MemberGroup_Group" Association="Self.FK_MemberGroup_Group">
+            <End Role="Group" EntitySet="Group" />
+            <End Role="MemberGroup" EntitySet="MemberGroup" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MemberGroup_Mother" Association="Self.FK_MemberGroup_Mother">
+            <End Role="Mother" EntitySet="Mother" />
+            <End Role="MemberGroup" EntitySet="MemberGroup" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OpenBabySitter_BabySitter" Association="Self.FK_OpenBabySitter_BabySitter">
+            <End Role="BabySitter" EntitySet="BabySitter" />
+            <End Role="OpenBabySitter" EntitySet="OpenBabySitter" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OpenBabySitter_PartOfDay" Association="Self.FK_OpenBabySitter_PartOfDay">
+            <End Role="PartOfDay" EntitySet="PartOfDay" />
+            <End Role="OpenBabySitter" EntitySet="OpenBabySitter" />
+          </AssociationSet>
+          <AssociationSet Name="FK_requestMother_mother" Association="Self.FK_requestMother_mother">
+            <End Role="Mother" EntitySet="Mother" />
+            <End Role="RequestMother" EntitySet="RequestMother" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RequestMother_PartOfDay" Association="Self.FK_RequestMother_PartOfDay">
+            <End Role="PartOfDay" EntitySet="PartOfDay" />
+            <End Role="RequestMother" EntitySet="RequestMother" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TrainingToMember_BabySitter" Association="Self.FK_TrainingToMember_BabySitter">
+            <End Role="BabySitter" EntitySet="BabySitter" />
+            <End Role="TrainingToMember" EntitySet="TrainingToMember" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TrainingToMember_Training" Association="Self.FK_TrainingToMember_Training">
+            <End Role="Training" EntitySet="Training" />
+            <End Role="TrainingToMember" EntitySet="TrainingToMember" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="BabySitterDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="BabySitter">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FirstName" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="LastName" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="City" Type="String" MaxLength="25" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Street" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="SalaryHour" Type="Int32" />
+          <Property Name="Password" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="BornDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Mail" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Phone" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="SpecialChildren" Type="Boolean" Nullable="false" />
+          <Property Name="ShowTell" Type="Boolean" Nullable="false" />
+          <Property Name="ShowMail" Type="Boolean" Nullable="false" />
+          <Property Name="status" Type="Int32" Nullable="false" />
+          <Property Name="StartWork" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="LowAgeChildren" Type="Int32" Nullable="false" />
+          <Property Name="HighAgeChildren" Type="Int32" Nullable="false" />
+          <Property Name="license" Type="Boolean" Nullable="false" />
+          <Property Name="Household" Type="Boolean" Nullable="false" />
+          <Property Name="CollectingChildren" Type="Boolean" Nullable="false" />
+          <Property Name="More" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Experience" Type="Int32" Nullable="false" />
+          <Property Name="MaxChildren" Type="Int32" Nullable="false" />
+          <Property Name="Is" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="IsShowFromGroups" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Status1" Relationship="Self.FK_BabySitter_Status" FromRole="BabySitter" ToRole="Status" />
+          <NavigationProperty Name="Favorite" Relationship="Self.FK_Favorite_BabySitter" FromRole="BabySitter" ToRole="Favorite" />
+          <NavigationProperty Name="FixedBabySitter" Relationship="Self.FK_FixedBabySitter_BabySitter" FromRole="BabySitter" ToRole="FixedBabySitter" />
+          <NavigationProperty Name="Group" Relationship="Self.FK_Group_BabySitter" FromRole="BabySitter" ToRole="Group" />
+          <NavigationProperty Name="Invaite" Relationship="Self.FK_Invaite_BabySitter1" FromRole="BabySitter" ToRole="Invaite" />
+          <NavigationProperty Name="LanguageToMember" Relationship="Self.FK_LanguageToMember_BabySitter" FromRole="BabySitter" ToRole="LanguageToMember" />
+          <NavigationProperty Name="MemberGroup" Relationship="Self.FK_MemberGroup_BabySitter" FromRole="BabySitter" ToRole="MemberGroup" />
+          <NavigationProperty Name="OpenBabySitter" Relationship="Self.FK_OpenBabySitter_BabySitter" FromRole="BabySitter" ToRole="OpenBabySitter" />
+          <NavigationProperty Name="TrainingToMember" Relationship="Self.FK_TrainingToMember_BabySitter" FromRole="BabySitter" ToRole="TrainingToMember" />
+        </EntityType>
+        <EntityType Name="Favorite">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdBabySitter" Type="Int32" Nullable="false" />
+          <Property Name="IdMother" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="BabySitter" Relationship="Self.FK_Favorite_BabySitter" FromRole="Favorite" ToRole="BabySitter" />
+          <NavigationProperty Name="Mother" Relationship="Self.FK_Favorite_Mother" FromRole="Favorite" ToRole="Mother" />
+        </EntityType>
+        <EntityType Name="FixedBabySitter">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdBabySitter" Type="Int32" Nullable="false" />
+          <Property Name="Day" Type="Int32" Nullable="false" />
+          <Property Name="IdPart" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="BabySitter" Relationship="Self.FK_FixedBabySitter_BabySitter" FromRole="FixedBabySitter" ToRole="BabySitter" />
+          <NavigationProperty Name="PartOfDay" Relationship="Self.FK_FixedBabySitter_PartOfDay" FromRole="FixedBabySitter" ToRole="PartOfDay" />
+        </EntityType>
+        <EntityType Name="FixedDate">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdMother" Type="Int32" Nullable="false" />
+          <Property Name="IdBabySitter" Type="Int32" Nullable="false" />
+          <Property Name="Date" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="IdPart" Type="Int32" Nullable="false" />
+          <Property Name="Detailst" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Group">
+          <Key>
+            <PropertyRef Name="GroupId" />
+          </Key>
+          <Property Name="GroupId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdMotherManager" Type="Int32" />
+          <Property Name="IdBabySitterManager" Type="Int32" />
+          <Property Name="NameGroup" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="BabySitter" Relationship="Self.FK_Group_BabySitter" FromRole="Group" ToRole="BabySitter" />
+          <NavigationProperty Name="Mother" Relationship="Self.FK_Group_Mother" FromRole="Group" ToRole="Mother" />
+          <NavigationProperty Name="MemberGroup" Relationship="Self.FK_MemberGroup_Group" FromRole="Group" ToRole="MemberGroup" />
+        </EntityType>
+        <EntityType Name="Invaite">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DateInviting" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="IdMotherInviting" Type="Int32" />
+          <Property Name="IdBabySitterInviting" Type="Int32" />
+          <Property Name="IsMotherInviting" Type="Boolean" Nullable="false" />
+          <Property Name="IdMotherAcceptsInvitation" Type="Int32" />
+          <Property Name="IdBabySitterAcceptsInvitation" Type="Int32" />
+          <Property Name="Date" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="IdPart" Type="Int32" Nullable="false" />
+          <Property Name="Details" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="IsConfirm" Type="Boolean" />
+          <Property Name="IdRequestMother" Type="Int32" />
+          <Property Name="IdOpenBabySitter" Type="Int32" />
+          <NavigationProperty Name="BabySitter" Relationship="Self.FK_Invaite_BabySitter1" FromRole="Invaite" ToRole="BabySitter" />
+          <NavigationProperty Name="PartOfDay" Relationship="Self.FK_Invaite_BabySitter" FromRole="Invaite" ToRole="PartOfDay" />
+          <NavigationProperty Name="Mother" Relationship="Self.FK_Invaite_Mother" FromRole="Invaite" ToRole="Mother" />
+          <NavigationProperty Name="Mother1" Relationship="Self.FK_Invaite_Mother1" FromRole="Invaite" ToRole="Mother" />
+          <NavigationProperty Name="OpenBabySitter" Relationship="Self.FK_Invaite_OpenBabySitter" FromRole="Invaite" ToRole="OpenBabySitter" />
+          <NavigationProperty Name="RequestMother" Relationship="Self.FK_Invaite_RequestMother" FromRole="Invaite" ToRole="RequestMother" />
+        </EntityType>
+        <EntityType Name="Language">
+          <Key>
+            <PropertyRef Name="IdLanguage" />
+          </Key>
+          <Property Name="IdLanguage" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NameLanguage" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="LanguageToMember" Relationship="Self.FK_LanguageToMember_Language" FromRole="Language" ToRole="LanguageToMember" />
+        </EntityType>
+        <EntityType Name="LanguageToMember">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdMember" Type="Int32" Nullable="false" />
+          <Property Name="IdLanguage" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="BabySitter" Relationship="Self.FK_LanguageToMember_BabySitter" FromRole="LanguageToMember" ToRole="BabySitter" />
+          <NavigationProperty Name="Language" Relationship="Self.FK_LanguageToMember_Language" FromRole="LanguageToMember" ToRole="Language" />
+        </EntityType>
+        <EntityType Name="MemberGroup">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdGroup" Type="Int32" Nullable="false" />
+          <Property Name="IdMother" Type="Int32" />
+          <Property Name="IdBabysitter" Type="Int32" />
+          <Property Name="IsApproved" Type="Boolean" />
+          <NavigationProperty Name="BabySitter" Relationship="Self.FK_MemberGroup_BabySitter" FromRole="MemberGroup" ToRole="BabySitter" />
+          <NavigationProperty Name="Group" Relationship="Self.FK_MemberGroup_Group" FromRole="MemberGroup" ToRole="Group" />
+          <NavigationProperty Name="Mother" Relationship="Self.FK_MemberGroup_Mother" FromRole="MemberGroup" ToRole="Mother" />
+        </EntityType>
+        <EntityType Name="Mother">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FirstName" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="LastName" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Street" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Phone" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="NumChildren" Type="Int32" Nullable="false" />
+          <Property Name="SalaryHour" Type="Int32" />
+          <Property Name="Password" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Mail" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="More" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="LowAgeChildren" Type="Int32" Nullable="false" />
+          <Property Name="HighAgeChildren" Type="Int32" Nullable="false" />
+          <Property Name="City" Type="String" MaxLength="25" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="ShowMail" Type="Boolean" />
+          <Property Name="ShowTell" Type="Boolean" />
+          <NavigationProperty Name="Favorite" Relationship="Self.FK_Favorite_Mother" FromRole="Mother" ToRole="Favorite" />
+          <NavigationProperty Name="Group" Relationship="Self.FK_Group_Mother" FromRole="Mother" ToRole="Group" />
+          <NavigationProperty Name="Invaite" Relationship="Self.FK_Invaite_Mother" FromRole="Mother" ToRole="Invaite" />
+          <NavigationProperty Name="Invaite1" Relationship="Self.FK_Invaite_Mother1" FromRole="Mother" ToRole="Invaite" />
+          <NavigationProperty Name="MemberGroup" Relationship="Self.FK_MemberGroup_Mother" FromRole="Mother" ToRole="MemberGroup" />
+          <NavigationProperty Name="RequestMother" Relationship="Self.FK_requestMother_mother" FromRole="Mother" ToRole="RequestMother" />
+          <Property Name="IsShowFromGroups" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="OpenBabySitter">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdBabySitter" Type="Int32" Nullable="false" />
+          <Property Name="DateOpen" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Date" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="IdPart" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="BabySitter" Relationship="Self.FK_OpenBabySitter_BabySitter" FromRole="OpenBabySitter" ToRole="BabySitter" />
+          <NavigationProperty Name="Invaite" Relationship="Self.FK_Invaite_OpenBabySitter" FromRole="OpenBabySitter" ToRole="Invaite" />
+          <NavigationProperty Name="PartOfDay" Relationship="Self.FK_OpenBabySitter_PartOfDay" FromRole="OpenBabySitter" ToRole="PartOfDay" />
+        </EntityType>
+        <EntityType Name="PartOfDay">
+          <Key>
+            <PropertyRef Name="IdPart" />
+          </Key>
+          <Property Name="IdPart" Type="Int32" Nullable="false" />
+          <Property Name="Part" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="FixedBabySitter" Relationship="Self.FK_FixedBabySitter_PartOfDay" FromRole="PartOfDay" ToRole="FixedBabySitter" />
+          <NavigationProperty Name="Invaite" Relationship="Self.FK_Invaite_BabySitter" FromRole="PartOfDay" ToRole="Invaite" />
+          <NavigationProperty Name="OpenBabySitter" Relationship="Self.FK_OpenBabySitter_PartOfDay" FromRole="PartOfDay" ToRole="OpenBabySitter" />
+          <NavigationProperty Name="RequestMother" Relationship="Self.FK_RequestMother_PartOfDay" FromRole="PartOfDay" ToRole="RequestMother" />
+        </EntityType>
+        <EntityType Name="RequestMother">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DateRequest" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="IdMother" Type="Int32" Nullable="false" />
+          <Property Name="Date" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="IdPart" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Invaite" Relationship="Self.FK_Invaite_RequestMother" FromRole="RequestMother" ToRole="Invaite" />
+          <NavigationProperty Name="Mother" Relationship="Self.FK_requestMother_mother" FromRole="RequestMother" ToRole="Mother" />
+          <NavigationProperty Name="PartOfDay" Relationship="Self.FK_RequestMother_PartOfDay" FromRole="RequestMother" ToRole="PartOfDay" />
+        </EntityType>
+        <EntityType Name="Status">
+          <Key>
+            <PropertyRef Name="IdType" />
+          </Key>
+          <Property Name="IdType" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Type" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="BabySitter" Relationship="Self.FK_BabySitter_Status" FromRole="Status" ToRole="BabySitter" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="Training">
+          <Key>
+            <PropertyRef Name="IdTrainingTable" />
+          </Key>
+          <Property Name="IdTrainingTable" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NameTraining" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="TrainingToMember" Relationship="Self.FK_TrainingToMember_Training" FromRole="Training" ToRole="TrainingToMember" />
+        </EntityType>
+        <EntityType Name="TrainingToMember">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="IdTraining" Type="Int32" Nullable="false" />
+          <Property Name="IdMember" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="BabySitter" Relationship="Self.FK_TrainingToMember_BabySitter" FromRole="TrainingToMember" ToRole="BabySitter" />
+          <NavigationProperty Name="Training" Relationship="Self.FK_TrainingToMember_Training" FromRole="TrainingToMember" ToRole="Training" />
+        </EntityType>
+        <Association Name="FK_BabySitter_Status">
+          <End Role="Status" Type="Self.Status" Multiplicity="1" />
+          <End Role="BabySitter" Type="Self.BabySitter" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Status">
+              <PropertyRef Name="IdType" />
+            </Principal>
+            <Dependent Role="BabySitter">
+              <PropertyRef Name="status" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Favorite_BabySitter">
+          <End Role="BabySitter" Type="Self.BabySitter" Multiplicity="1" />
+          <End Role="Favorite" Type="Self.Favorite" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BabySitter">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Favorite">
+              <PropertyRef Name="IdBabySitter" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FixedBabySitter_BabySitter">
+          <End Role="BabySitter" Type="Self.BabySitter" Multiplicity="1" />
+          <End Role="FixedBabySitter" Type="Self.FixedBabySitter" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BabySitter">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="FixedBabySitter">
+              <PropertyRef Name="IdBabySitter" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Group_BabySitter">
+          <End Role="BabySitter" Type="Self.BabySitter" Multiplicity="0..1" />
+          <End Role="Group" Type="Self.Group" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BabySitter">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Group">
+              <PropertyRef Name="IdBabySitterManager" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Invaite_BabySitter1">
+          <End Role="BabySitter" Type="Self.BabySitter" Multiplicity="0..1" />
+          <End Role="Invaite" Type="Self.Invaite" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BabySitter">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Invaite">
+              <PropertyRef Name="IdBabySitterAcceptsInvitation" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LanguageToMember_BabySitter">
+          <End Role="BabySitter" Type="Self.BabySitter" Multiplicity="1" />
+          <End Role="LanguageToMember" Type="Self.LanguageToMember" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BabySitter">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="LanguageToMember">
+              <PropertyRef Name="IdMember" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MemberGroup_BabySitter">
+          <End Role="BabySitter" Type="Self.BabySitter" Multiplicity="0..1" />
+          <End Role="MemberGroup" Type="Self.MemberGroup" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BabySitter">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="MemberGroup">
+              <PropertyRef Name="IdBabysitter" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OpenBabySitter_BabySitter">
+          <End Role="BabySitter" Type="Self.BabySitter" Multiplicity="1" />
+          <End Role="OpenBabySitter" Type="Self.OpenBabySitter" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BabySitter">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="OpenBabySitter">
+              <PropertyRef Name="IdBabySitter" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TrainingToMember_BabySitter">
+          <End Role="BabySitter" Type="Self.BabySitter" Multiplicity="1" />
+          <End Role="TrainingToMember" Type="Self.TrainingToMember" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BabySitter">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TrainingToMember">
+              <PropertyRef Name="IdMember" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Favorite_Mother">
+          <End Role="Mother" Type="Self.Mother" Multiplicity="1" />
+          <End Role="Favorite" Type="Self.Favorite" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Mother">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Favorite">
+              <PropertyRef Name="IdMother" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FixedBabySitter_PartOfDay">
+          <End Role="PartOfDay" Type="Self.PartOfDay" Multiplicity="1" />
+          <End Role="FixedBabySitter" Type="Self.FixedBabySitter" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PartOfDay">
+              <PropertyRef Name="IdPart" />
+            </Principal>
+            <Dependent Role="FixedBabySitter">
+              <PropertyRef Name="IdPart" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Group_Mother">
+          <End Role="Mother" Type="Self.Mother" Multiplicity="0..1" />
+          <End Role="Group" Type="Self.Group" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Mother">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Group">
+              <PropertyRef Name="IdMotherManager" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MemberGroup_Group">
+          <End Role="Group" Type="Self.Group" Multiplicity="1" />
+          <End Role="MemberGroup" Type="Self.MemberGroup" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Group">
+              <PropertyRef Name="GroupId" />
+            </Principal>
+            <Dependent Role="MemberGroup">
+              <PropertyRef Name="IdGroup" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Invaite_BabySitter">
+          <End Role="PartOfDay" Type="Self.PartOfDay" Multiplicity="1" />
+          <End Role="Invaite" Type="Self.Invaite" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PartOfDay">
+              <PropertyRef Name="IdPart" />
+            </Principal>
+            <Dependent Role="Invaite">
+              <PropertyRef Name="IdPart" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Invaite_Mother">
+          <End Role="Mother" Type="Self.Mother" Multiplicity="0..1" />
+          <End Role="Invaite" Type="Self.Invaite" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Mother">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Invaite">
+              <PropertyRef Name="IdMotherInviting" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Invaite_Mother1">
+          <End Role="Mother" Type="Self.Mother" Multiplicity="0..1" />
+          <End Role="Invaite" Type="Self.Invaite" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Mother">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Invaite">
+              <PropertyRef Name="IdMotherAcceptsInvitation" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Invaite_OpenBabySitter">
+          <End Role="OpenBabySitter" Type="Self.OpenBabySitter" Multiplicity="0..1" />
+          <End Role="Invaite" Type="Self.Invaite" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OpenBabySitter">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Invaite">
+              <PropertyRef Name="IdOpenBabySitter" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Invaite_RequestMother">
+          <End Role="RequestMother" Type="Self.RequestMother" Multiplicity="0..1" />
+          <End Role="Invaite" Type="Self.Invaite" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RequestMother">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Invaite">
+              <PropertyRef Name="IdRequestMother" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LanguageToMember_Language">
+          <End Role="Language" Type="Self.Language" Multiplicity="1" />
+          <End Role="LanguageToMember" Type="Self.LanguageToMember" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Language">
+              <PropertyRef Name="IdLanguage" />
+            </Principal>
+            <Dependent Role="LanguageToMember">
+              <PropertyRef Name="IdLanguage" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MemberGroup_Mother">
+          <End Role="Mother" Type="Self.Mother" Multiplicity="0..1" />
+          <End Role="MemberGroup" Type="Self.MemberGroup" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Mother">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="MemberGroup">
+              <PropertyRef Name="IdMother" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_requestMother_mother">
+          <End Role="Mother" Type="Self.Mother" Multiplicity="1" />
+          <End Role="RequestMother" Type="Self.RequestMother" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Mother">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="RequestMother">
+              <PropertyRef Name="IdMother" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OpenBabySitter_PartOfDay">
+          <End Role="PartOfDay" Type="Self.PartOfDay" Multiplicity="1" />
+          <End Role="OpenBabySitter" Type="Self.OpenBabySitter" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PartOfDay">
+              <PropertyRef Name="IdPart" />
+            </Principal>
+            <Dependent Role="OpenBabySitter">
+              <PropertyRef Name="IdPart" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RequestMother_PartOfDay">
+          <End Role="PartOfDay" Type="Self.PartOfDay" Multiplicity="1" />
+          <End Role="RequestMother" Type="Self.RequestMother" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PartOfDay">
+              <PropertyRef Name="IdPart" />
+            </Principal>
+            <Dependent Role="RequestMother">
+              <PropertyRef Name="IdPart" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TrainingToMember_Training">
+          <End Role="Training" Type="Self.Training" Multiplicity="1" />
+          <End Role="TrainingToMember" Type="Self.TrainingToMember" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Training">
+              <PropertyRef Name="IdTrainingTable" />
+            </Principal>
+            <Dependent Role="TrainingToMember">
+              <PropertyRef Name="IdTraining" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="BabySitterDBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="BabySitter" EntityType="Self.BabySitter" />
+          <EntitySet Name="Favorite" EntityType="Self.Favorite" />
+          <EntitySet Name="FixedBabySitter" EntityType="Self.FixedBabySitter" />
+          <EntitySet Name="FixedDate" EntityType="Self.FixedDate" />
+          <EntitySet Name="Group" EntityType="Self.Group" />
+          <EntitySet Name="Invaite" EntityType="Self.Invaite" />
+          <EntitySet Name="Language" EntityType="Self.Language" />
+          <EntitySet Name="LanguageToMember" EntityType="Self.LanguageToMember" />
+          <EntitySet Name="MemberGroup" EntityType="Self.MemberGroup" />
+          <EntitySet Name="Mother" EntityType="Self.Mother" />
+          <EntitySet Name="OpenBabySitter" EntityType="Self.OpenBabySitter" />
+          <EntitySet Name="PartOfDay" EntityType="Self.PartOfDay" />
+          <EntitySet Name="RequestMother" EntityType="Self.RequestMother" />
+          <EntitySet Name="Status" EntityType="Self.Status" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+          <EntitySet Name="Training" EntityType="Self.Training" />
+          <EntitySet Name="TrainingToMember" EntityType="Self.TrainingToMember" />
+          <AssociationSet Name="FK_BabySitter_Status" Association="Self.FK_BabySitter_Status">
+            <End Role="Status" EntitySet="Status" />
+            <End Role="BabySitter" EntitySet="BabySitter" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Favorite_BabySitter" Association="Self.FK_Favorite_BabySitter">
+            <End Role="BabySitter" EntitySet="BabySitter" />
+            <End Role="Favorite" EntitySet="Favorite" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FixedBabySitter_BabySitter" Association="Self.FK_FixedBabySitter_BabySitter">
+            <End Role="BabySitter" EntitySet="BabySitter" />
+            <End Role="FixedBabySitter" EntitySet="FixedBabySitter" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Group_BabySitter" Association="Self.FK_Group_BabySitter">
+            <End Role="BabySitter" EntitySet="BabySitter" />
+            <End Role="Group" EntitySet="Group" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Invaite_BabySitter1" Association="Self.FK_Invaite_BabySitter1">
+            <End Role="BabySitter" EntitySet="BabySitter" />
+            <End Role="Invaite" EntitySet="Invaite" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LanguageToMember_BabySitter" Association="Self.FK_LanguageToMember_BabySitter">
+            <End Role="BabySitter" EntitySet="BabySitter" />
+            <End Role="LanguageToMember" EntitySet="LanguageToMember" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MemberGroup_BabySitter" Association="Self.FK_MemberGroup_BabySitter">
+            <End Role="BabySitter" EntitySet="BabySitter" />
+            <End Role="MemberGroup" EntitySet="MemberGroup" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OpenBabySitter_BabySitter" Association="Self.FK_OpenBabySitter_BabySitter">
+            <End Role="BabySitter" EntitySet="BabySitter" />
+            <End Role="OpenBabySitter" EntitySet="OpenBabySitter" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TrainingToMember_BabySitter" Association="Self.FK_TrainingToMember_BabySitter">
+            <End Role="BabySitter" EntitySet="BabySitter" />
+            <End Role="TrainingToMember" EntitySet="TrainingToMember" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Favorite_Mother" Association="Self.FK_Favorite_Mother">
+            <End Role="Mother" EntitySet="Mother" />
+            <End Role="Favorite" EntitySet="Favorite" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FixedBabySitter_PartOfDay" Association="Self.FK_FixedBabySitter_PartOfDay">
+            <End Role="PartOfDay" EntitySet="PartOfDay" />
+            <End Role="FixedBabySitter" EntitySet="FixedBabySitter" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Group_Mother" Association="Self.FK_Group_Mother">
+            <End Role="Mother" EntitySet="Mother" />
+            <End Role="Group" EntitySet="Group" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MemberGroup_Group" Association="Self.FK_MemberGroup_Group">
+            <End Role="Group" EntitySet="Group" />
+            <End Role="MemberGroup" EntitySet="MemberGroup" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Invaite_BabySitter" Association="Self.FK_Invaite_BabySitter">
+            <End Role="PartOfDay" EntitySet="PartOfDay" />
+            <End Role="Invaite" EntitySet="Invaite" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Invaite_Mother" Association="Self.FK_Invaite_Mother">
+            <End Role="Mother" EntitySet="Mother" />
+            <End Role="Invaite" EntitySet="Invaite" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Invaite_Mother1" Association="Self.FK_Invaite_Mother1">
+            <End Role="Mother" EntitySet="Mother" />
+            <End Role="Invaite" EntitySet="Invaite" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Invaite_OpenBabySitter" Association="Self.FK_Invaite_OpenBabySitter">
+            <End Role="OpenBabySitter" EntitySet="OpenBabySitter" />
+            <End Role="Invaite" EntitySet="Invaite" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Invaite_RequestMother" Association="Self.FK_Invaite_RequestMother">
+            <End Role="RequestMother" EntitySet="RequestMother" />
+            <End Role="Invaite" EntitySet="Invaite" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LanguageToMember_Language" Association="Self.FK_LanguageToMember_Language">
+            <End Role="Language" EntitySet="Language" />
+            <End Role="LanguageToMember" EntitySet="LanguageToMember" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MemberGroup_Mother" Association="Self.FK_MemberGroup_Mother">
+            <End Role="Mother" EntitySet="Mother" />
+            <End Role="MemberGroup" EntitySet="MemberGroup" />
+          </AssociationSet>
+          <AssociationSet Name="FK_requestMother_mother" Association="Self.FK_requestMother_mother">
+            <End Role="Mother" EntitySet="Mother" />
+            <End Role="RequestMother" EntitySet="RequestMother" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OpenBabySitter_PartOfDay" Association="Self.FK_OpenBabySitter_PartOfDay">
+            <End Role="PartOfDay" EntitySet="PartOfDay" />
+            <End Role="OpenBabySitter" EntitySet="OpenBabySitter" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RequestMother_PartOfDay" Association="Self.FK_RequestMother_PartOfDay">
+            <End Role="PartOfDay" EntitySet="PartOfDay" />
+            <End Role="RequestMother" EntitySet="RequestMother" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TrainingToMember_Training" Association="Self.FK_TrainingToMember_Training">
+            <End Role="Training" EntitySet="Training" />
+            <End Role="TrainingToMember" EntitySet="TrainingToMember" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="BabySitterDBModelStoreContainer" CdmEntityContainer="BabySitterDBEntities">
+          <EntitySetMapping Name="BabySitter">
+            <EntityTypeMapping TypeName="BabySitterDBModel.BabySitter">
+              <MappingFragment StoreEntitySet="BabySitter">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="Street" ColumnName="Street" />
+                <ScalarProperty Name="SalaryHour" ColumnName="SalaryHour" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="BornDate" ColumnName="BornDate" />
+                <ScalarProperty Name="Mail" ColumnName="Mail" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="SpecialChildren" ColumnName="SpecialChildren" />
+                <ScalarProperty Name="ShowTell" ColumnName="ShowTell" />
+                <ScalarProperty Name="ShowMail" ColumnName="ShowMail" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="StartWork" ColumnName="StartWork" />
+                <ScalarProperty Name="LowAgeChildren" ColumnName="LowAgeChildren" />
+                <ScalarProperty Name="HighAgeChildren" ColumnName="HighAgeChildren" />
+                <ScalarProperty Name="license" ColumnName="license" />
+                <ScalarProperty Name="Household" ColumnName="Household" />
+                <ScalarProperty Name="CollectingChildren" ColumnName="CollectingChildren" />
+                <ScalarProperty Name="More" ColumnName="More" />
+                <ScalarProperty Name="Experience" ColumnName="Experience" />
+                <ScalarProperty Name="MaxChildren" ColumnName="MaxChildren" />
+                <ScalarProperty Name="Is" ColumnName="Is" />
+                <ScalarProperty Name="IsShowFromGroups" ColumnName="IsShowFromGroups" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Favorite">
+            <EntityTypeMapping TypeName="BabySitterDBModel.Favorite">
+              <MappingFragment StoreEntitySet="Favorite">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="IdBabySitter" ColumnName="IdBabySitter" />
+                <ScalarProperty Name="IdMother" ColumnName="IdMother" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FixedBabySitter">
+            <EntityTypeMapping TypeName="BabySitterDBModel.FixedBabySitter">
+              <MappingFragment StoreEntitySet="FixedBabySitter">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="IdBabySitter" ColumnName="IdBabySitter" />
+                <ScalarProperty Name="Day" ColumnName="Day" />
+                <ScalarProperty Name="IdPart" ColumnName="IdPart" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FixedDate">
+            <EntityTypeMapping TypeName="BabySitterDBModel.FixedDate">
+              <MappingFragment StoreEntitySet="FixedDate">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="IdMother" ColumnName="IdMother" />
+                <ScalarProperty Name="IdBabySitter" ColumnName="IdBabySitter" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="IdPart" ColumnName="IdPart" />
+                <ScalarProperty Name="Detailst" ColumnName="Detailst" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Group">
+            <EntityTypeMapping TypeName="BabySitterDBModel.Group">
+              <MappingFragment StoreEntitySet="Group">
+                <ScalarProperty Name="GroupId" ColumnName="GroupId" />
+                <ScalarProperty Name="IdMotherManager" ColumnName="IdMotherManager" />
+                <ScalarProperty Name="IdBabySitterManager" ColumnName="IdBabySitterManager" />
+                <ScalarProperty Name="NameGroup" ColumnName="NameGroup" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Invaite">
+            <EntityTypeMapping TypeName="BabySitterDBModel.Invaite">
+              <MappingFragment StoreEntitySet="Invaite">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="DateInviting" ColumnName="DateInviting" />
+                <ScalarProperty Name="IdMotherInviting" ColumnName="IdMotherInviting" />
+                <ScalarProperty Name="IdBabySitterInviting" ColumnName="IdBabySitterInviting" />
+                <ScalarProperty Name="IsMotherInviting" ColumnName="IsMotherInviting" />
+                <ScalarProperty Name="IdMotherAcceptsInvitation" ColumnName="IdMotherAcceptsInvitation" />
+                <ScalarProperty Name="IdBabySitterAcceptsInvitation" ColumnName="IdBabySitterAcceptsInvitation" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="IdPart" ColumnName="IdPart" />
+                <ScalarProperty Name="Details" ColumnName="Details" />
+                <ScalarProperty Name="IsConfirm" ColumnName="IsConfirm" />
+                <ScalarProperty Name="IdRequestMother" ColumnName="IdRequestMother" />
+                <ScalarProperty Name="IdOpenBabySitter" ColumnName="IdOpenBabySitter" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Language">
+            <EntityTypeMapping TypeName="BabySitterDBModel.Language">
+              <MappingFragment StoreEntitySet="Language">
+                <ScalarProperty Name="IdLanguage" ColumnName="IdLanguage" />
+                <ScalarProperty Name="NameLanguage" ColumnName="NameLanguage" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LanguageToMember">
+            <EntityTypeMapping TypeName="BabySitterDBModel.LanguageToMember">
+              <MappingFragment StoreEntitySet="LanguageToMember">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="IdMember" ColumnName="IdMember" />
+                <ScalarProperty Name="IdLanguage" ColumnName="IdLanguage" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MemberGroup">
+            <EntityTypeMapping TypeName="BabySitterDBModel.MemberGroup">
+              <MappingFragment StoreEntitySet="MemberGroup">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="IdGroup" ColumnName="IdGroup" />
+                <ScalarProperty Name="IdMother" ColumnName="IdMother" />
+                <ScalarProperty Name="IdBabysitter" ColumnName="IdBabysitter" />
+                <ScalarProperty Name="IsApproved" ColumnName="IsApproved" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Mother">
+            <EntityTypeMapping TypeName="BabySitterDBModel.Mother">
+              <MappingFragment StoreEntitySet="Mother">
+                <ScalarProperty Name="IsShowFromGroups" ColumnName="IsShowFromGroups" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="Street" ColumnName="Street" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="NumChildren" ColumnName="NumChildren" />
+                <ScalarProperty Name="SalaryHour" ColumnName="SalaryHour" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Mail" ColumnName="Mail" />
+                <ScalarProperty Name="More" ColumnName="More" />
+                <ScalarProperty Name="LowAgeChildren" ColumnName="LowAgeChildren" />
+                <ScalarProperty Name="HighAgeChildren" ColumnName="HighAgeChildren" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="ShowMail" ColumnName="ShowMail" />
+                <ScalarProperty Name="ShowTell" ColumnName="ShowTell" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OpenBabySitter">
+            <EntityTypeMapping TypeName="BabySitterDBModel.OpenBabySitter">
+              <MappingFragment StoreEntitySet="OpenBabySitter">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="IdBabySitter" ColumnName="IdBabySitter" />
+                <ScalarProperty Name="DateOpen" ColumnName="DateOpen" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="IdPart" ColumnName="IdPart" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PartOfDay">
+            <EntityTypeMapping TypeName="BabySitterDBModel.PartOfDay">
+              <MappingFragment StoreEntitySet="PartOfDay">
+                <ScalarProperty Name="IdPart" ColumnName="IdPart" />
+                <ScalarProperty Name="Part" ColumnName="Part" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RequestMother">
+            <EntityTypeMapping TypeName="BabySitterDBModel.RequestMother">
+              <MappingFragment StoreEntitySet="RequestMother">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="DateRequest" ColumnName="DateRequest" />
+                <ScalarProperty Name="IdMother" ColumnName="IdMother" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="IdPart" ColumnName="IdPart" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Status">
+            <EntityTypeMapping TypeName="BabySitterDBModel.Status">
+              <MappingFragment StoreEntitySet="Status">
+                <ScalarProperty Name="IdType" ColumnName="IdType" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="BabySitterDBModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Training">
+            <EntityTypeMapping TypeName="BabySitterDBModel.Training">
+              <MappingFragment StoreEntitySet="Training">
+                <ScalarProperty Name="IdTrainingTable" ColumnName="IdTrainingTable" />
+                <ScalarProperty Name="NameTraining" ColumnName="NameTraining" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TrainingToMember">
+            <EntityTypeMapping TypeName="BabySitterDBModel.TrainingToMember">
+              <MappingFragment StoreEntitySet="TrainingToMember">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="IdTraining" ColumnName="IdTraining" />
+                <ScalarProperty Name="IdMember" ColumnName="IdMember" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

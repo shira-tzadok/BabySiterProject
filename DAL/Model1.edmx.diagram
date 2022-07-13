@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="c4e1c142178e419c80b0472a789a29b3" Name="Diagram1">
+        <EntityTypeShape EntityType="BabySitterDBModel.BabySitter" Width="1.5" PointX="3" PointY="9.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="BabySitterDBModel.Favorite" Width="1.5" PointX="5.25" PointY="12.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="BabySitterDBModel.FixedBabySitter" Width="1.5" PointX="5.25" PointY="9" IsExpanded="true" />
+        <EntityTypeShape EntityType="BabySitterDBModel.FixedDate" Width="1.5" PointX="8.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BabySitterDBModel.Group" Width="1.5" PointX="5.25" PointY="14.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="BabySitterDBModel.Invaite" Width="1.5" PointX="8.25" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BabySitterDBModel.Language" Width="1.5" PointX="6" PointY="3.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="BabySitterDBModel.LanguageToMember" Width="1.5" PointX="8.25" PointY="7.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="BabySitterDBModel.MemberGroup" Width="1.5" PointX="10.5" PointY="13.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="BabySitterDBModel.Mother" Width="1.5" PointX="3" PointY="18.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="BabySitterDBModel.OpenBabySitter" Width="1.5" PointX="8.25" PointY="16.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="BabySitterDBModel.PartOfDay" Width="1.5" PointX="3" PointY="3" IsExpanded="true" />
+        <EntityTypeShape EntityType="BabySitterDBModel.RequestMother" Width="1.5" PointX="6" PointY="18.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="BabySitterDBModel.Status" Width="1.5" PointX="0.75" PointY="12.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="BabySitterDBModel.sysdiagrams" Width="1.5" PointX="8.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BabySitterDBModel.Training" Width="1.5" PointX="3" PointY="6.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="BabySitterDBModel.TrainingToMember" Width="1.5" PointX="5.25" PointY="6.125" IsExpanded="true" />
+        <AssociationConnector Association="BabySitterDBModel.FK_BabySitter_Status" ManuallyRouted="false" />
+        <AssociationConnector Association="BabySitterDBModel.FK_Favorite_BabySitter" ManuallyRouted="false" />
+        <AssociationConnector Association="BabySitterDBModel.FK_FixedBabySitter_BabySitter" ManuallyRouted="false" />
+        <AssociationConnector Association="BabySitterDBModel.FK_Group_BabySitter" ManuallyRouted="false" />
+        <AssociationConnector Association="BabySitterDBModel.FK_Invaite_BabySitter1" ManuallyRouted="false" />
+        <AssociationConnector Association="BabySitterDBModel.FK_LanguageToMember_BabySitter" ManuallyRouted="false" />
+        <AssociationConnector Association="BabySitterDBModel.FK_MemberGroup_BabySitter" ManuallyRouted="false" />
+        <AssociationConnector Association="BabySitterDBModel.FK_OpenBabySitter_BabySitter" ManuallyRouted="false" />
+        <AssociationConnector Association="BabySitterDBModel.FK_TrainingToMember_BabySitter" ManuallyRouted="false" />
+        <AssociationConnector Association="BabySitterDBModel.FK_Favorite_Mother" ManuallyRouted="false" />
+        <AssociationConnector Association="BabySitterDBModel.FK_FixedBabySitter_PartOfDay" ManuallyRouted="false" />
+        <AssociationConnector Association="BabySitterDBModel.FK_Group_Mother" ManuallyRouted="false" />
+        <AssociationConnector Association="BabySitterDBModel.FK_MemberGroup_Group" ManuallyRouted="false" />
+        <AssociationConnector Association="BabySitterDBModel.FK_Invaite_BabySitter" ManuallyRouted="false" />
+        <AssociationConnector Association="BabySitterDBModel.FK_Invaite_Mother" ManuallyRouted="false" />
+        <AssociationConnector Association="BabySitterDBModel.FK_Invaite_Mother1" ManuallyRouted="false" />
+        <AssociationConnector Association="BabySitterDBModel.FK_Invaite_OpenBabySitter" ManuallyRouted="false" />
+        <AssociationConnector Association="BabySitterDBModel.FK_Invaite_RequestMother" ManuallyRouted="false" />
+        <AssociationConnector Association="BabySitterDBModel.FK_LanguageToMember_Language" ManuallyRouted="false" />
+        <AssociationConnector Association="BabySitterDBModel.FK_MemberGroup_Mother" ManuallyRouted="false" />
+        <AssociationConnector Association="BabySitterDBModel.FK_requestMother_mother" ManuallyRouted="false" />
+        <AssociationConnector Association="BabySitterDBModel.FK_OpenBabySitter_PartOfDay" ManuallyRouted="false" />
+        <AssociationConnector Association="BabySitterDBModel.FK_RequestMother_PartOfDay" ManuallyRouted="false" />
+        <AssociationConnector Association="BabySitterDBModel.FK_TrainingToMember_Training" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
